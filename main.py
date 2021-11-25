@@ -5,7 +5,7 @@ from concurrent import futures
 import uvicorn
 from fastapi import BackgroundTasks, FastAPI
 from pydantic import BaseModel
-from internal import execute
+from internal import execute, connection
 
 app = FastAPI()
 
@@ -19,6 +19,12 @@ class Query(BaseModel):
 @app.get("/")
 def read_root():
     return {"msg": "Tokyo Housing Prices"}
+
+
+@app.get("/trades/")
+def list_trades():
+    data = connection('trades').select_all()
+    return data
 
 
 @app.post("/trades/")
@@ -35,8 +41,9 @@ def collect_trades(query: dict):
 
     # Sanitization
     data = sanitization(data)
-
-    print(data)
+    # データベースにデータ投入
+    conn = connection('trades')
+    conn.upsert(data)
 
 
 def sanitization(_data):

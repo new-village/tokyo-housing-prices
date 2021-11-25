@@ -1,6 +1,6 @@
 {
     "uid": {
-        "name": "Uid",
+        "name": "id",
         "type": "str"
     },
     "category": {
