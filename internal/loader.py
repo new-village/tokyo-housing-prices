@@ -1,6 +1,7 @@
 """ loader.py
 """
 import os
+from datetime import datetime
 from azure.cosmos import CosmosClient, exceptions, PartitionKey
 
 
@@ -35,6 +36,15 @@ class connection():
             [i.pop(key, 'x') for key in ['_rid', '_self', '_etag', '_attachments', '_ts']]
         return items
 
+    def get(self, id):
+        return self.container.read_item(id)
+
     def upsert(self, items):
         for i in items:
             self.container.upsert_item(i)
+
+    def start(self, pid):
+        self.container.upsert_item({'id': pid, 'start': datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'status': 'Processing'})
+
+    def finish(self, pid, status):
+        self.container.upsert_item({'id': pid, 'end': datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'status': status})
