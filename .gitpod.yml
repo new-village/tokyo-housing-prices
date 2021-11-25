@@ -7,3 +7,4 @@ tasks:
       pip install -U setuptools
     command: |
       source .venv/bin/activate
+      export PIP_USER=false
