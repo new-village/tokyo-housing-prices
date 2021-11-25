@@ -55,3 +55,7 @@ You can see deployed application in `App Service` page.
 Select `App Service` > Configuration > New Application Setting.  
 Then you have to set ACCOUNT_URI/ACCOUNT_KEY environment variables and Save configuration.
   
+## Note
+```
+$ curl -X POST -H "Content-Type: application/json" -d '{"year":"2021", "ward":"13106"}' http://127.0.0.1:8000/trades/
+```
