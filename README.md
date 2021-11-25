@@ -57,5 +57,5 @@ Then you have to set ACCOUNT_URI/ACCOUNT_KEY environment variables and Save conf
   
 ## Note
 ```
-$ curl -X POST -H "Content-Type: application/json" -d '{"year":"2021", "ward":"13106"}' http://127.0.0.1:8000/trades/
+$ curl -X POST -H "Content-Type: application/json" -d '{"file_name":"13_Tokyo_20201_20212.csv"}' http://127.0.0.1:8000/trades/
 ```
