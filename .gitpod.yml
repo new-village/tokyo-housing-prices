@@ -8,3 +8,4 @@ tasks:
     command: |
       source .venv/bin/activate
       export PIP_USER=false
+      source local.sh
