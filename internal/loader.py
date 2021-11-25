@@ -31,6 +31,8 @@ class connection():
 
     def select_all(self):
         items = list(self.container.read_all_items())
+        for i in items:
+            [i.pop(key, 'x') for key in ['_rid', '_self', '_etag', '_attachments', '_ts']]
         return items
 
     def upsert(self, items):
