@@ -1,82 +1,82 @@
 {
-    "uid": {
+    "No": {
         "name": "id",
         "type": "str"
     },
-    "category": {
+    "種類": {
         "name": "Category",
         "type": "str"
     },
-    "ward_code": {
+    "市区町村コード": {
         "name": "WardCode",
         "type": "str"
     },
-    "state": {
+    "都道府県名": {
         "name": "State",
         "type": "str"
     },
-    "ward": {
+    "市区町村名": {
         "name": "Ward",
         "type": "str"
     },
-    "town": {
+    "地区名": {
         "name": "Town",
         "type": "str"
     },
-    "station": {
+    "最寄駅：名称": {
         "name": "Station",
         "type": "str"
     },
-    "station_distance": {
-        "name": "StatinDistance",
+    "最寄駅：距離（分）": {
+        "name": "StationDistance",
         "type": "int",
         "regex": "\\d+"
     },
-    "trade_price": {
+    "取引価格（総額）": {
         "name": "TradePrice",
         "type": "int",
         "regex": "\\d+"
     },
-    "layout": {
+    "間取り": {
         "name": "Layout",
         "type": "str",
         "function": "jp_normalize"
     },
-    "area": {
+    "面積（㎡）": {
         "name": "Area",
         "type": "int",
         "regex": "\\d+"
     },
-    "building_year": {
+    "建築年": {
         "name": "BuildingYear",
         "type": "int",
         "function": "JpnYear_to_ad"
     },
-    "building_stracture": {
+    "建物の構造": {
         "name": "Stracture",
         "type": "str",
         "function": "jp_normalize"
     },
-    "purpose": {
+    "用途": {
         "name": "Purpose",
         "type": "str"
     },
-    "building_coverage": {
+    "建ぺい率（％）": {
         "name": "BuildingCoverage",
         "type": "int",
         "regex": "\\d+"
     },
-    "floor_area_ratio": {
+    "容積率（％）": {
         "name": "FloorAreaRatio",
         "type": "int",
         "regex": "\\d+"
     },
-    "trade_date": {
+    "取引時点": {
         "name": "TradeYear",
         "type": "str",
         "function": "jp_normalize"
     },
-    "reform": {
+    "改装": {
         "name": "Reform",
         "type": "str"
     }

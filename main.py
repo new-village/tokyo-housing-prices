@@ -5,20 +5,21 @@ from concurrent import futures
 import uvicorn
 from fastapi import BackgroundTasks, FastAPI
 from pydantic import BaseModel
+from typing import Optional
 from internal import execute, connection
 
 app = FastAPI()
 
 
 class Query(BaseModel):
-    year: str
-    ward: str
+    file_name: Optional[str] = '13_Tokyo_20201_20212.csv'
     pid = str(uuid.uuid4())
 
 
 @app.get("/")
 def read_root():
-    return {"msg": "Tokyo Housing Prices"}
+    cnt = connection('trades').count()
+    return {"msg": "Tokyo Housing Prices", "stored_records": cnt}
 
 
 @app.get("/trades/")
@@ -35,7 +36,7 @@ def create_trades(query: Query, background_tasks: BackgroundTasks):
 
 def collect_trades(query: dict):
     # CSV to DICT
-    with open('./config/training_data.csv', newline='', encoding='utf_8') as f:
+    with open('./config/' + query['file_name'], newline='', encoding='cp932') as f:
         reader = csv.DictReader(f)
         data = [row for row in reader]
 
