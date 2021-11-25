@@ -1,0 +1,83 @@
+{
+    "uid": {
+        "name": "Uid",
+        "type": "str"
+    },
+    "category": {
+        "name": "Category",
+        "type": "str"
+    },
+    "ward_code": {
+        "name": "WardCode",
+        "type": "str"
+    },
+    "state": {
+        "name": "State",
+        "type": "str"
+    },
+    "ward": {
+        "name": "Ward",
+        "type": "str"
+    },
+    "town": {
+        "name": "Town",
+        "type": "str"
+    },
+    "station": {
+        "name": "Station",
+        "type": "str"
+    },
+    "station_distance": {
+        "name": "StatinDistance",
+        "type": "int",
+        "regex": "\\d+"
+    },
+    "trade_price": {
+        "name": "TradePrice",
+        "type": "int",
+        "regex": "\\d+"
+    },
+    "layout": {
+        "name": "Layout",
+        "type": "str",
+        "function": "jp_normalize"
+    },
+    "area": {
+        "name": "Area",
+        "type": "int",
+        "regex": "\\d+"
+    },
+    "building_year": {
+        "name": "BuildingYear",
+        "type": "int",
+        "function": "JpnYear_to_ad"
+    },
+    "building_stracture": {
+        "name": "Stracture",
+        "type": "str",
+        "function": "jp_normalize"
+    },
+    "purpose": {
+        "name": "Purpose",
+        "type": "str"
+    },
+    "building_coverage": {
+        "name": "BuildingCoverage",
+        "type": "int",
+        "regex": "\\d+"
+    },
+    "floor_area_ratio": {
+        "name": "FloorAreaRatio",
+        "type": "int",
+        "regex": "\\d+"
+    },
+    "trade_date": {
+        "name": "TradeYear",
+        "type": "str",
+        "function": "jp_normalize"
+    },
+    "reform": {
+        "name": "Reform",
+        "type": "str"
+    }
+}

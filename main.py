@@ -1,7 +1,11 @@
-import uvicorn
+import csv
 import uuid
-from fastapi import FastAPI, BackgroundTasks
+from concurrent import futures
+
+import uvicorn
+from fastapi import BackgroundTasks, FastAPI
 from pydantic import BaseModel
+from internal import execute
 
 app = FastAPI()
 
@@ -24,10 +28,24 @@ def create_trades(query: Query, background_tasks: BackgroundTasks):
 
 
 def collect_trades(query: dict):
-    # requests.get でデータ取得
-    params = 'DLF=true&TTC-From=' + query['year'] + '1&TTC-To=' + query['year'] + '1&TDK=13&SKC=' + query['ward']
-    url = 'https://www.land.mlit.go.jp/webland/servlet/DownloadServlet?' + params
-    print(url)
+    # CSV to DICT
+    with open('./config/training_data.csv', newline='', encoding='utf_8') as f:
+        reader = csv.DictReader(f)
+        data = [row for row in reader]
+
+    # Sanitization
+    data = sanitization(data)
+
+    print(data)
+
+
+def sanitization(_data):
+    result = []
+    with futures.ProcessPoolExecutor(max_workers=8) as executor:
+        for rec in _data:
+            result.append(executor.submit(execute, rec).result())
+
+    return result
 
 
 if __name__ == '__main__':
